@@ -1,0 +1,60 @@
+<div class="page" ng-controller="OrderController">
+
+    <div>
+        <h3>
+            Order
+            <div style="float:right">$ {{getTotal() | number : 2 }}</div>
+        </h3>
+    </div>
+
+    <form name="orderForm">
+
+        <div class="well">
+            <div class="row-content">
+                <h4>Choose a size: <small> (Choose 1)</small></h4>
+            </div>
+            <div class="row">
+                <span class="col-md-4" ng-repeat="item in sizes">
+                    <input type="radio" ng-model="order.aux.size" ng-click="setSize(item)" name="size" value="{{item}}" required>&nbsp;&nbsp;{{item.nameAndPrice}}
+                </span>
+            </div>
+        </div>
+
+        <div class="well">
+            <div class="row-content">
+                <h4>Choose a crost: <small> (Choose 1)</small></h4>
+            </div>
+            <div class="row">
+                <span class="col-md-4" ng-repeat="item in bases">
+                    <input type="radio" ng-model="order.aux.base" ng-click="setBase(item)" name="base" value="{{item}}" required>&nbsp;&nbsp;{{item.nameAndPrice}}
+                </span>
+            </div>
+        </div>
+
+        <div class="well">
+            <div class="row-content">
+                <h4>Choose a sauce: <small> (Choose 1)</small></h4>
+            </div>
+            <div class="row">
+                <span class="col-md-4" ng-repeat="item in sauces">
+                    <input type="radio" ng-model="order.aux.sauce" ng-click="setSauce(item)" name="sauce" value="{{item}}" required>&nbsp;&nbsp;{{item.nameAndPrice}}
+                </span>
+            </div>
+        </div>
+
+        <div class="well">
+            <div class="row-content">
+                <h4>Would you like toppings?</h4>
+            </div>
+            <div class="row">
+                <span class="col-md-4" ng-repeat="item in toppings">
+                    <input type="checkbox" name="toppings[]" value="{{item}}" ng-click="selectTopping(item)">&nbsp;&nbsp;{{item.nameAndPrice}}
+                </span>
+            </div>
+        </div>
+
+        <div class="row col-sm-offset-3 col-sm-6">
+            <button class="btn btn-lg btn-primary btn-block" ng-disabled="!orderForm.$valid" ng-click="submitOrder()">Order</button>
+        </div>
+    </form>
+</div>

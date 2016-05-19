@@ -1,0 +1,39 @@
+<div class="page" ng-controller="ItemsController">
+    <div>
+        <h3>
+            Items
+            <div style="float:right"><button type="button" ng-click="newItemForm()" class="btn btn-sm btn-primary">New</button></div>
+        </h3>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock qty</th>
+                <th class="text-center">Enabled</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.name}}</td>
+                <td>{{item.category}}</td>
+                <td width="80">
+                    <input type="text" id="price" class="form-control text-right" ng-change="item.changed=true" ng-model="item.price" required="required"/>
+                </td>
+                <td width="80">
+                    <input min="0" ng-change="item.changed=true" ng-model="item.stockQty" step="any" type="number" value="{{item.stockQty}}">
+                </td>
+                <td class="text-center">
+                    <input type="checkbox" ng-checked="{{item.enabled}}" ng-model="item.enabled" ng-click="item.changed=true">
+                </td>
+                <td>
+                    <button type="button" ng-disabled="!item.changed" ng-click="updateItem(item);" class="btn btn-sm btn-primary">Save</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

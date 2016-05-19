@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+</head>
+<body ng-app="myApp">
+
+<div ng-include="'views/navbar.html'"></div>
+
+<div class="container">
+    <div style="position: relative">
+        <div ng-view></div>
+    </div>
+</div>
+
+<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+<script src="/webjars/angular-http-auth/1.2.2/http-auth-interceptor.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<!--<script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+
+<script type="text/javascript" src="./resources/js/app.js"></script>
+<script type="text/javascript" src="./resources/js/controllers.js"></script>
+<script type="text/javascript" src="./resources/js/services.js"></script>
+<script type="text/javascript" src="./resources/js/lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
+<link rel="stylesheet" href="/webjars/font-awesome/4.6.2/css/font-awesome.min.css">
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+<link rel="stylesheet" href="./resources/css/style.css">
+<link rel="stylesheet" href="./resources/css/lib.min.css">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myItemModal" tabindex="-1" role="dialog" aria-labelledby="myItemModalLabel" ng-controller="ItemsController">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myItemModalLabel">New Item</h4>
+            </div>
+            <div class="modal-body">
+                <form name="itemForm">
+
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="name">Name</label>
+                        <input id="name" type="text" class="form-control" ng-model="newItem.name" required="required"/>
+                    </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="category">Category</label>
+                        <select ng-model="newItem.category" class="form-control selectpicker" maxlength="100" data-live-search="true">
+                            <option value="">Select</option>
+                            <option value="SIZE">SIZE</option>
+                            <option value="BASE">BASE</option>
+                            <option value="SAUCE">SAUCE</option>
+                            <option value="TOPPING">TOPPING</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="price">Price</label>
+                        <input id="price" type="text" class="form-control" ng-model="newItem.price" required="required"/>
+                    </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="qty">Stock Qty</label>
+                        <input id="qty" min="0" ng-model="newItem.stockQty" step="any" type="number" value="0">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="alert alert-danger text-center" ng-show="formError">
+                    Please check your data and try again. All fields required.
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="saveItem()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript">
+    window.onload=function(){
+        $('.selectpicker').selectpicker({
+          style: 'btn-info',
+          size: 10
+        });
+    };
+</script>
+
+</body>
+</html>

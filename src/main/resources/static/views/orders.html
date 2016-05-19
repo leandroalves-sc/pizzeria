@@ -1,0 +1,37 @@
+<div class="page" ng-controller="OrdersController">
+    <div>
+        <h3>Orders</h3>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order date</th>
+                <th ng-show="isUserAdmin()">User</th>
+                <th>State</th>
+                <th>Size</th>
+                <th>Base</th>
+                <th>Sauce</th>
+                <th>Toppings</th>
+                <th>Total</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in orders">
+                <td>{{order.dtOrder | date}}</td>
+                <td ng-show="isUserAdmin()">{{order.user.name}}</td>
+                <td>{{order.prettyStateName}}</td>
+                <td>{{order.size}}</td>
+                <td>{{order.base}}</td>
+                <td>{{order.sauce}}</td>
+                <td>{{order.toppings}}</td>
+                <td>{{order.total}}</td>
+                <td>
+                    <button type="button" ng-show="{{(order.state == 'ORDERED' || order.state == 'PROCESSING') && isUserAdmin()}}" ng-click="setOrderNextState(order)" class="btn btn-sm btn-primary">Move to {{order.prettyNextStateName}}</button>
+                    <button type="button" ng-show="{{order.state == 'ORDERED'}}" ng-click="cancelOrder(order)" class="btn btn-sm btn-danger">Cancel order</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
