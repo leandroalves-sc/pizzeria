@@ -1,6 +1,6 @@
-# Rapid prototyping with Spring Boot and AngularJS
-This example demonstrates how **Spring Boot**, **Spring Data JPA** and in the front-end **AngularJS** can be used together to write web applications easily.
-In this code example I'm demonstrating this by providing a full CRUD-based web application.
+# Pizzeria Craft demostration
+This example demonstrates how to create a modern web application using newest technologies and frameworks such as **Spring Boot**, **Spring Data JPA** and in the front-end **AngularJS** can be used together to write web applications easily.
+In this code example I'm demonstrating this by providing a full CRUD-based web application proposed.
 
 ## Frameworks
 
@@ -27,13 +27,19 @@ With Spring Boot you can even leave the configuration behind for configuring Spr
 H2 embedded database was used to simplify the task to create and mantain the data storage. 
 
 ## Installation
-Installation is quite easy, you can run Maven to package the application:
+Installation is quite easy, you just need to follow the steps below:
+
+Clone the repository:
+```
+git clone https://github.com/leandroalves-sc/pizzeria.git
+```
+
+Run Maven to package the application from the project base directorty:
 ```
 mvn clean package
 ```
 
-Now you can easily start the Java application running the following command:
+It will generate a war file that can be runned from command line as below, or also deployed at a web container:
 ```
-java -jar ./target/pizzeria-1.0.0.jar
+java -jar ./target/pizzeria-1.0.0.war
 ```
-
