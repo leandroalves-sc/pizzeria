@@ -5,7 +5,7 @@
 
     <groupId>com.leandro.pizzeria</groupId>
     <artifactId>pizzeria</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <name>pizzeria</name>
     <packaging>war</packaging>
 
